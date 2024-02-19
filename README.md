@@ -27,5 +27,5 @@ A collaborative project to develop a library management system using React for t
 - Java: https://www.java.com
 
 For questions or inquiries, feel free to contact:
-- https://github.com/zojegabili
-- https://github.com/franceskah1 
+- [Zoje Gabili](https://github.com/zojegabili)
+- [Franceska Harizaj](https://github.com/franceskah1)
