@@ -20,3 +20,12 @@ A collaborative project to develop a library management system using React for t
 - Start the frontend server by running `npm start` in the `frontend` directory.
 - Start the backend server according to the instructions provided in the `backend` directory.
 - Open your browser and navigate to the specified address to access the library management system.
+
+## Credits
+
+- React: https://reactjs.org
+- Java: https://www.java.com
+
+For questions or inquiries, feel free to contact:
+https://github.com/zojegabili
+https://github.com/franceskah1 
