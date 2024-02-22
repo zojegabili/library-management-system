@@ -36,17 +36,66 @@ function LoginModal({ open, onClose }) {
     }
   };
 
-  // Other functions remain unchanged...
+  const handleLogout = () => {
+    setIsLoggedIn(false); // Set isLoggedIn to false
+    setIsAdmin(false); //Reset isAdmin
+  };
+
+  const handleAddNewUser = () => {
+    setOpenRegistrationModal(true); // Open the user registration modal
+  };
+
+  const handleCloseRegistrationModal = () => {
+    setOpenRegistrationModal(false); // Close the user registration modal
+  }
 
   return (
     <>
     <Dialog open={open} onClose={onClose}>
       {!isLoggedIn ? (
       <form onSubmit={handleSubmit}>
-        {/* Form fields remain unchanged... */}
+        <DialogTitle>Login here</DialogTitle>
+        <DialogContent>
+          <TextField
+            label="Email"
+            fullWidth
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <TextField
+            label="Password"
+            type="password"
+            fullWidth
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {error && <p style={{ color: 'red' }}>{error}</p>}
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={onClose}>Cancel</Button>
+          <Button type="submit">Login</Button>
+        </DialogActions>
       </form>
       ): (
-      {/* Content for logged in users remains unchanged... */}
+      <>
+        <DialogTitle>Logged in successfully</DialogTitle>
+        <DialogContent>
+          <p>You are now logged in!</p>
+        </DialogContent>
+        <DialogActions>
+        {isLoggedIn ? (
+            <>
+          {isAdmin && (<Button onClick={handleAddNewUser}>Add new user</Button>
+          )}
+          <Button onClick={handleLogout}>Logout</Button>
+          </>
+          ) : (
+            <>
+              <Button onClick={onClose}>Cancel</Button>
+            </>
+          )}
+        </DialogActions>
+      </>
       )}
     </Dialog>
     {openRegistrationModal && <UserRegistrationForm open={openRegistrationModal} onClose={handleCloseRegistrationModal} />}
