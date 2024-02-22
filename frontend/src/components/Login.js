@@ -12,22 +12,27 @@ function LoginModal({ open, onClose }) {
   const [isUser, setIsUser] = useState(false);
   const [openRegistrationModal, setOpenRegistrationModal] = useState(false); // State to control the visibility of the user registration modal
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email === 'admin@gmail.com' && password === '123456') {
-      const adminData = { email: 'admin@gmail.com', role: 'admin' };
-      // Login successful
-      setIsLoggedIn(true);
-      setIsAdmin(adminData.role === 'admin'); // Set isAdmin based on user's role
-      onClose();
-    } else if(email === 'user@gmail.com' && password === '654321'){
-      const userData = { email: 'user@gmail.com', role: 'user' };
-      setIsLoggedIn(true);
-      setIsUser(userData.role === 'user'); // Set isAdmin based on user's role
-      setIsAdmin(false);
-      onClose();
-    }else {
-      setError('Invalid email or password');
+    try {
+      const response = await fetch('http://localhost:8080/LMS/auth/login', { // Update the URL here
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setIsLoggedIn(true);
+        setIsAdmin(data.role === 'admin');
+        setIsUser(data.role === 'user');
+        onClose();
+      } else {
+        setError('Invalid email or password');
+      }
+    } catch (error) {
+      setError('An error occurred while logging in');
     }
   };
 
