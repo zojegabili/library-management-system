@@ -1,17 +1,29 @@
 .home-container {
-    background-image: url('https://source.unsplash.com/random?library');
-    background-size: cover;
-    background-position: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    min-height: 89.8vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-attachment: fixed;
-    opacity: 1;
+  position: relative; /* Make the container relative for absolute positioning of children */
+}
+
+.home-container:before {
+  content: ""; /* Create a pseudo-element to apply the background image */
+  position: absolute; /* Position the pseudo-element absolutely within the container */
+  width: 100%; /* Set width to 100% */
+  height: 100%; /* Set height to 100% */
+  background-image: url('https://source.unsplash.com/random?library'); /* Replace with your background image URL */
+  opacity: 0.65; /* Set opacity to 0.65 (65% transparency) */
+  min-height: 89.8vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-attachment: fixed;
+}
+
+ .main-content{
+    color: black;
+    font-size: 28px;
+    text-align: center;
+    width: 500px;
+    height: 400px;
+    margin: auto;
   }
   
   
@@ -20,19 +32,14 @@
     margin-bottom: 20px;
   }
   
-  .main-content {
-    margin-bottom: 40px;
-    max-width: 800px;
-    text-align: center;
-    border-radius: 1em 0 1em 0;
-    background-image: linear-gradient(
-    -100deg,
-    rgba(255, 20, 0, 0.2),
-    rgba(88, 189, 90, 0.7) 95%,
-    rgba(94, 194, 106, 0.1)
-  );
-  }
-  
+.box{
+  position: relative;
+  padding: 40px;
+  background: rgba(255,255,255, .7);
+  top: 10%;
+  font-family:  serif;
+}
+
   footer {
     text-align: center;
     color: #666;

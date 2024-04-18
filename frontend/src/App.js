@@ -10,12 +10,9 @@ function App() {
   return (
     <Router>
       <NavigationBar />
-        {/* <div> */}
           <Route path="/home" component={Home} />
-          {/* <Route exact path="/login" component={Login} /> */}
           <Route path="/registernewuser" component={UserRegistrationForm}/>
           <Route path="/dashboard" component={Dashboard}/>
-        {/* </div> */}
     </Router>
     
   );
