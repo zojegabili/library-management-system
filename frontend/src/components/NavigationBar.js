@@ -74,7 +74,7 @@ export default function HorizontalList() {
         </ListItem>
         <Divider orientation="vertical" flexItem />
         <ListItem>
-          <ListItemButton role="menuitem" component="a" href="#books"
+          <ListItemButton role="menuitem" component="a" href="/#books"
            sx={{
             '&:hover': {
               backgroundColor: '#CCB35C', // Change background color on hover
@@ -90,7 +90,7 @@ export default function HorizontalList() {
         </ListItem>
         <Divider orientation="vertical" flexItem />
         <ListItem>
-          <ListItemButton role="menuitem" component="a" href="#blog"
+          <ListItemButton role="menuitem" component="a" href="/#blog"
            sx={{
             '&:hover': {
               backgroundColor: '#CCB35C', // Change background color on hover
