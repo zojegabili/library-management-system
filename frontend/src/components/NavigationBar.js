@@ -9,11 +9,14 @@ import PersonIcon from '@mui/icons-material/Person';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import LoginModal from './Login';
+import { useLocation } from 'react-router-dom';
 
 export default function HorizontalList() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
+  const location = useLocation();
+  const [selectedButton, setSelectedButton] = useState(null);
 
   useEffect(() => {
     // Check login status on component mount
@@ -56,19 +59,48 @@ export default function HorizontalList() {
             component="a"
             href="/home"
             aria-label="Home"
+            sx={{
+              '&:hover': {
+                backgroundColor: '#CCB35C', // Change background color on hover
+              },
+              '&[href="/home"].Mui-selected': {
+                backgroundColor: '#CCB35C', // Change background color when href is "/home" and selected
+              },
+            }}
+            selected={location.pathname === '/home'} // Mark as selected if href matches current location
           >
             <HomeIcon />
           </ListItemButton>
         </ListItem>
         <Divider orientation="vertical" flexItem />
         <ListItem>
-          <ListItemButton role="menuitem" component="a" href="#horizontal-list">
+          <ListItemButton role="menuitem" component="a" href="#books"
+           sx={{
+            '&:hover': {
+              backgroundColor: '#CCB35C', // Change background color on hover
+            },
+            '&[href="/home"].Mui-selected': {
+              backgroundColor: '#CCB35C', // Change background color when href is "#horizontal-list" and selected
+            },
+          }}
+          selected={location.pathname === '/#books'} // Mark as selected if href matches current location
+          >
             Books
           </ListItemButton>
         </ListItem>
         <Divider orientation="vertical" flexItem />
         <ListItem>
-          <ListItemButton role="menuitem" component="a" href="#horizontal-list">
+          <ListItemButton role="menuitem" component="a" href="#blog"
+           sx={{
+            '&:hover': {
+              backgroundColor: '#CCB35C', // Change background color on hover
+            },
+            '&[href="/home"].Mui-selected': {
+              backgroundColor: '#CCB35C', // Change background color when href is "#horizontal-list" and selected
+            },
+          }}
+          selected={location.pathname === '/#blog'} // Mark as selected if href matches current location
+          >
             Blog
           </ListItemButton>
         </ListItem>
@@ -79,6 +111,14 @@ export default function HorizontalList() {
               role="menuitem"
               aria-label="User Actions"
               onClick={() => setLoginModalOpen(true)}
+              sx={{
+                '&:hover': {
+                  backgroundColor: '#CCB35C', // Change background color on hover
+                },
+                '&.Mui-selected': {
+                  backgroundColor: '#CCB35C', // Change background color when selected
+                },
+              }}
             >
               <PersonIcon />
             </ListItemButton>
@@ -89,6 +129,14 @@ export default function HorizontalList() {
               role="menuitem"
               aria-label="Logout"
               onClick={handleLogout}
+              sx={{
+                '&:hover': {
+                  backgroundColor: '#CCB35C', // Change background color on hover
+                },
+                '&.Mui-selected': {
+                  backgroundColor: '#CCB35C', // Change background color when selected
+                },
+              }}
             >
               Logout
             </ListItemButton>
