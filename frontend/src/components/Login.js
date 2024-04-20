@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, TextField } from '@mui/material';
 import UserRegistrationForm from './UserRegistrationForm';
+import './Login.css';
+import DialogContentText from '@mui/material/DialogContentText';
+import { Link } from 'react-router-dom';
 
 function LoginModal({ open, onClose }) {
 
@@ -51,30 +54,47 @@ function LoginModal({ open, onClose }) {
 
   return (
     <>
-    <Dialog open={open} onClose={onClose}>
+    <Dialog open={open} onClose={onClose} PaperProps={{ style: {  boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)' } }}>
+    <div className="dialog-background"> {/* Apply transparency effect here */}
       {!isLoggedIn ? (
       <form onSubmit={handleSubmit}>
-        <DialogTitle>Login here</DialogTitle>
+        <DialogTitle style={{ textAlign: 'center' }}>LOGIN</DialogTitle>
         <DialogContent>
+          <DialogContentText>
+            To login to this LMS, please enter your email address and password here.
+          </DialogContentText>
+            <TextField
+              autoFocus
+              required
+              margin="dense"
+              label="Email Address"
+              placeholder='for ex.: zoje.gabili@gmail.com'
+              fullWidth
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              variant="standard"
+            />
           <TextField
-            label="Email"
-            fullWidth
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <TextField
-            label="Password"
+            autoFocus
+            required
+            margin="dense"
+            placeholder='***********************************'
             type="password"
+            label="Password"
             fullWidth
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            variant="standard"
           />
           {error && <p style={{ color: 'red' }}>{error}</p>}
         </DialogContent>
-        <DialogActions>
+        <DialogActions style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <Button onClick={onClose}>Cancel</Button>
           <Button type="submit">Login</Button>
         </DialogActions>
+        <div style={{ textAlign: 'center', fontSize: '18px'}}>
+            Forgot password? Click <Link to="/forgot-password" style={{ textDecoration: 'underline' }}>here.</Link>
+        </div>
       </form>
       ): (
       <>
@@ -97,6 +117,7 @@ function LoginModal({ open, onClose }) {
         </DialogActions>
       </>
       )}
+      </div>
     </Dialog>
     {openRegistrationModal && <UserRegistrationForm open={openRegistrationModal} onClose={handleCloseRegistrationModal} />}
     

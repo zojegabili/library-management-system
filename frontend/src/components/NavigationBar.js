@@ -74,32 +74,38 @@ export default function HorizontalList() {
         </ListItem>
         <Divider orientation="vertical" flexItem />
         <ListItem>
-          <ListItemButton role="menuitem" component="a" href="#books"
-           sx={{
+          <ListItemButton
+          role="menuitem"
+          component="a"
+          href="/books"
+          sx={{
             '&:hover': {
               backgroundColor: '#CCB35C', // Change background color on hover
             },
-            '&[href="/home"].Mui-selected': {
+            '&[href="/books"].Mui-selected': {
               backgroundColor: '#CCB35C', // Change background color when href is "#horizontal-list" and selected
             },
           }}
-          selected={location.pathname === '/#books'} // Mark as selected if href matches current location
+          selected={location.pathname === '/books'} // Mark as selected if href matches current location
           >
             Books
           </ListItemButton>
         </ListItem>
         <Divider orientation="vertical" flexItem />
         <ListItem>
-          <ListItemButton role="menuitem" component="a" href="#blog"
-           sx={{
+          <ListItemButton
+          role="menuitem"
+          component="a"
+          href="/blog"
+          sx={{
             '&:hover': {
               backgroundColor: '#CCB35C', // Change background color on hover
             },
-            '&[href="/home"].Mui-selected': {
+            '&[href="/blog"].Mui-selected': {
               backgroundColor: '#CCB35C', // Change background color when href is "#horizontal-list" and selected
             },
           }}
-          selected={location.pathname === '/#blog'} // Mark as selected if href matches current location
+          selected={location.pathname === '/blog'} // Mark as selected if href matches current location
           >
             Blog
           </ListItemButton>
@@ -115,10 +121,11 @@ export default function HorizontalList() {
                 '&:hover': {
                   backgroundColor: '#CCB35C', // Change background color on hover
                 },
-                '&.Mui-selected': {
-                  backgroundColor: '#CCB35C', // Change background color when selected
+                '&[href="#login"].Mui-selected': {
+                  backgroundColor: '#CCB35C', // Change background color when href is "#horizontal-list" and selected
                 },
               }}
+              selected={location.pathname === '#login'} 
             >
               <PersonIcon />
             </ListItemButton>
@@ -128,15 +135,7 @@ export default function HorizontalList() {
             <ListItemButton
               role="menuitem"
               aria-label="Logout"
-              onClick={handleLogout}
-              sx={{
-                '&:hover': {
-                  backgroundColor: '#CCB35C', // Change background color on hover
-                },
-                '&.Mui-selected': {
-                  backgroundColor: '#CCB35C', // Change background color when selected
-                },
-              }}
+              onClick={handleLogout}s
             >
               Logout
             </ListItemButton>
